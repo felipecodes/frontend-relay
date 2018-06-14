@@ -1,17 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Welcome from './components/Welcome';
-import BookList from './containers/BookList';
-import CategoryNavigation from './containers/CategoryNavigation';
+import Home from './views/Home';
+import Books from './views/Books';
 
 const App = () => (
   <Router>
     <div>
-      <Header />
-      <CategoryNavigation />
-      <Route exact path="/" component={Welcome} />
-      <Route path="/books" component={BookList} />
+      <Route exact path="/" component={Home} />
+      <Route path="/books" component={Books} />
     </div>
   </Router>
 );
