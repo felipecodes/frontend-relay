@@ -1,27 +1,26 @@
-import React from 'react';
-import { graphql, QueryRenderer } from 'react-relay';
-import environment from '../../environment';
+// @flow
 
-export default () => (
-  <QueryRenderer
-    environment={environment}
-    query={graphql`
-      query BookListQuery {
-        books {
-          edges {
-            cursor
-            node {
-              title
-            }
+import React from 'react';
+import { graphql, createFragmentContainer } from 'react-relay';
+
+const BookList = (props) => {
+  console.log('BookList -> ', props);
+  return <div>BookList</div>;
+};
+
+const BookListContainer = createFragmentContainer(
+  BookList,
+  graphql`
+    fragment BookList_books on Query {
+      books {
+        edges {
+          node {
+            title
           }
         }
       }
-    `}
-    variables={{}}
-    render={({ error, props }) => {
-      if (error) return <div>Error!</div>;
-      if (!props) return <div>Loading...</div>;
-      return <div>{JSON.stringify(props)}</div>;
-    }}
-  />
+    }
+  `,
 );
+
+export default BookListContainer;
