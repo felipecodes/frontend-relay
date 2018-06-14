@@ -49,3 +49,6 @@ build-*
 
 # react build
 dist
+
+# relay compiler
+__generated__

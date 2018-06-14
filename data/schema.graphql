@@ -1,0 +1,55 @@
+type Book implements Node {
+  id: ID!
+  _id: String
+  title: String
+  description: String
+  author: String
+  isbn: String
+  category: String
+}
+
+type BookConnection {
+  edges: [BookEdge]
+  pageInfo: PageInfo!
+}
+
+type BookEdge {
+  cursor: String!
+  node: Book
+}
+
+input IntroduceBookInput {
+  title: String!
+  description: String!
+  author: String!
+  isbn: String!
+  category: String!
+  clientMutationId: String
+}
+
+type IntroduceBookPayload {
+  book: Book
+  error: String
+  clientMutationId: String
+}
+
+type Mutation {
+  IntroduceBook(input: IntroduceBookInput!): IntroduceBookPayload
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  book(id: ID!): Book
+  books(after: String, first: Int, before: String, last: Int, category: String): BookConnection
+  node(id: ID!): Node
+}

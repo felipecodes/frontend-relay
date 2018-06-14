@@ -51,7 +51,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "dev": "webpack-dev-server --open --config webpack/webpack.dev.js",
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql --extensions js",
+    "relay": "relay-compiler --src ./src --schema ./data/schema.graphql",
     "relay:watch": "npm run relay -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint src"
