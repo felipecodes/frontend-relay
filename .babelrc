@@ -1,4 +1,11 @@
 {
   "presets": ["env", "react"],
-  "plugins": ["transform-export-extensions", "relay"]
+  "plugins": [
+    "transform-export-extensions",
+    [
+      "transform-object-rest-spread",
+      { "useBuiltIns": true }
+    ],
+    "relay"
+  ]
 }
