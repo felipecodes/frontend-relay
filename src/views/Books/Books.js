@@ -9,12 +9,12 @@ const Books = () => (
   <QueryRenderer
     environment={environment}
     query={graphql`
-      query BooksQuery {
-        ...BookList_books
+      query BooksQuery($count: Int, $cursor: String) {
+        ...BookList_query
       }
     `}
     // location.path can be /books/programming/python
-    variables={{}}
+    variables={{ cursor: null, count: 1 }}
     render={({ error, props }) => {
       if (error) return <div>Error</div>;
 
@@ -23,7 +23,7 @@ const Books = () => (
       return (
         <Fragment>
           {/* <CategoryNavigation categories={renderProps.categories} /> */}
-          <BookList />
+          <BookList query={props} />
         </Fragment>
       );
     }}
